@@ -1,0 +1,38 @@
+﻿@*@model IEnumerable<Domain.Cliente>*@
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+@*<div style="margin: 60px; background-color: white; padding: 20px">
+    <div class="row">
+        <div class="col-xs-12">
+            <a asp-controller="Cliente" asp-action="Adicionar" class="btn btn-primary pull-right">NOVO</a>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>NOME</th>
+                <th>RG</th>
+                <th>CPF</th>
+                <th>ENDERECO</th>
+                <th>TELEFONE</th>
+                <th>CIDADE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><span>@item.Nome"</span></td>
+                    <td><span>@item.Rg</span></td>
+                    <td><span>@item.Cpf</span></td>
+                    <td><span>@item.Endereco</span></td>
+                    <td><span>@item.Telefone</span></td>
+                    <td><span>@item.Cidade?.Nome</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>*@
