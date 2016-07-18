@@ -19,7 +19,6 @@ namespace DotNetCore.Controllers
                 this.seed = new Seed();
         }
 
-        [Route("Cliente")]
         public IActionResult Index()
         {
             using (ContextEF _db = new ContextEF(seed.GetOptions))

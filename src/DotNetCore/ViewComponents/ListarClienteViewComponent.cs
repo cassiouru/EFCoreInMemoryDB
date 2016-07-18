@@ -1,11 +1,9 @@
 ﻿using Domain;
 using Domain.Context;
 using Microsoft.AspNet.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace DotNetCore.ViewComponents
 {
@@ -28,7 +26,7 @@ namespace DotNetCore.ViewComponents
                     clientes = _db.Cliente.ToList();
                 });
 
-                return View("~/Views/Shared/Components/ListarCliente/Default.cshtml", clientes);
+                return View(clientes);
             }
         }
     }
