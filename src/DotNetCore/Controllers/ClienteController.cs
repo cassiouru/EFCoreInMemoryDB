@@ -6,21 +6,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Domain.Context;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Domain;
 
 namespace DotNetCore.Controllers
 {
     public class ClienteController : Controller
     {
         private Seed seed;
+        private IConfiguration _configuration;
 
-        public ClienteController()
+        public ClienteController(IConfiguration configuration)
         {
+            this._configuration = configuration;
+
             if(this.seed == null)
                 this.seed = new Seed();
         }
 
-        public IActionResult Index()
+        public IActionResult Index([FromServices]IOptions<Contato> options)
         {
+            var key = _configuration.GetSection("Configuracoes:key").Value;
+            Contato contato = options.Value;
+
             using (ContextEF _db = new ContextEF(seed.GetOptions))
             {
                 return View(_db.Cliente.Include(x => x.Cidade).ToList());

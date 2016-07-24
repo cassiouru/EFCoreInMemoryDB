@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Domain.Context;
+using Domain;
 
 namespace DotNetCore
 {
@@ -34,6 +30,12 @@ namespace DotNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IConfiguration>(
+                            _ => Configuration);
+
+            //services.Configure<Contato>(Configuration.GetSection(""));
+
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
